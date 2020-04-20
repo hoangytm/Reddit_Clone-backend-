@@ -9,7 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 /**
  * @author PhanHoang
@@ -37,7 +38,7 @@ public class User {
     @Column(name = "email")
     private String email;
     @Column(name = "created")
-    private Date created;
+    private LocalDateTime created;
     @Column(name = "enabled")
     private boolean enabled;
 }
