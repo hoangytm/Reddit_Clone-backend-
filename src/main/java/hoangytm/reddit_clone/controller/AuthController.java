@@ -4,7 +4,7 @@ import hoangytm.reddit_clone.model.LoginRequest;
 import hoangytm.reddit_clone.model.RegisterRequest;
 import hoangytm.reddit_clone.model.response.AuthenticationResponse;
 import hoangytm.reddit_clone.service.AuthService;
-import lombok.AllArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +18,8 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-@Autowired
-AuthService authService;
+    @Autowired
+    AuthService authService;
 
     @PostMapping("/signup")
     public ResponseEntity signup(@RequestBody RegisterRequest registerRequest) {
