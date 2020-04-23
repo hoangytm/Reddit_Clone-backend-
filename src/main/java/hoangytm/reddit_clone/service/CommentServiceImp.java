@@ -24,17 +24,17 @@ import static java.util.stream.Collectors.toList;
 public class CommentServiceImp implements CommentService {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
     @Autowired
-    CommentRepository commentRepository;
+    private CommentRepository commentRepository;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    AuthService authService;
+    private AuthService authService;
     @Autowired
-    MailContentBuilder mailContentBuilder;
+    private MailContentBuilder mailContentBuilder;
     @Autowired
-    MailService mailService;
+    private MailService mailService;
 
     public void createComment(CommenstDTO commenstDTO) {
         Post post = postRepository.findById(commenstDTO.getPostId())

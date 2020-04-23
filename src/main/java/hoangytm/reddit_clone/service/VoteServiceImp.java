@@ -26,11 +26,11 @@ import static hoangytm.reddit_clone.model.VoteType.UPVOTE;
 public class VoteServiceImp implements VoteService {
 
     @Autowired
-    VoteRepository voteRepository;
+    private VoteRepository voteRepository;
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
     @Autowired
-    AuthService authService;
+    private AuthService authService;
 
     @Transactional
     public void vote(VoteDTO voteDto) {

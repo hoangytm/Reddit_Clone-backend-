@@ -35,19 +35,19 @@ import static java.time.LocalDateTime.now;
 @Slf4j
 public class AuthService {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     @Autowired
-    VerificationTokenRepository verificationTokenRepository;
+    private VerificationTokenRepository verificationTokenRepository;
     @Autowired
-    MailContentBuilder mailContentBuilder;
+    private MailContentBuilder mailContentBuilder;
     @Autowired
-    MailService mailService;
+    private MailService mailService;
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
     @Autowired
-    JwtProvider jwtProvider;
+    private JwtProvider jwtProvider;
 
 
     @Transactional

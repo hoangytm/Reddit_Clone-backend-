@@ -20,9 +20,9 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class SubredditServiceImp implements SubredditService {
     @Autowired
-    SubredditRepository subredditRepository;
+    private SubredditRepository subredditRepository;
     @Autowired
-    AuthService authService;
+    private AuthService authService;
 
     @Transactional
     public List<SubredditDTO> getAll() {

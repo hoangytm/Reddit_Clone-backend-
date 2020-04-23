@@ -8,15 +8,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.security.*;
-import java.security.cert.CertificateException;
-import java.time.Instant;
+
 import java.util.Date;
 
-import static io.jsonwebtoken.Jwts.parser;
 
 /**
  * @author PhanHoang

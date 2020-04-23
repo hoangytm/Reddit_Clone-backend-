@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -26,13 +25,13 @@ import static java.util.stream.Collectors.toList;
 public class PostServiceImp implements PostService {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
     @Autowired
-    SubredditRepository subredditRepository;
+    private SubredditRepository subredditRepository;
     @Autowired
-    UserRepository userRepository;
+   private UserRepository userRepository;
     @Autowired
-    AuthService authService;
+    private AuthService authService;
 
     @Transactional
     public PostResponse getPost(Long id) {
