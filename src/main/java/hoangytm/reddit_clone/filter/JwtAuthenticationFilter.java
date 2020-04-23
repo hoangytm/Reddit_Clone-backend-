@@ -1,4 +1,6 @@
 package hoangytm.reddit_clone.filter;
+
+import hoangytm.reddit_clone.common.Constant;
 import hoangytm.reddit_clone.service.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * @author PhanHoang
  * 4/21/2020
@@ -31,8 +34,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String jwt = getJwtFromRequest(request);
-
-        if (StringUtils.hasText(jwt) && jwtProvider.validateToken(jwt)) {
+        String url = request.getRequestURL().toString();
+        if (url.equals(Constant.LOG_IN_URL) || url.equals(Constant.SIGN_UP_URL)) {
+                filterChain.doFilter(request, response);
+        } else if (StringUtils.hasText(jwt) && jwtProvider.validateToken(jwt)) {
             String username = jwtProvider.getUsernameFromJWT(jwt);
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -41,10 +46,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            filterChain.doFilter(request, response);
 
+        } else {
+            throw new RuntimeException("invalid token");
         }
-        filterChain.doFilter(request, response);
-        }
+
+    }
 
 
     private String getJwtFromRequest(HttpServletRequest request) {

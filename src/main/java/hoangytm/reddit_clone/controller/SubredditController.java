@@ -30,7 +30,7 @@ public class SubredditController {
 
     @PostMapping
     public SubredditDTO create(@RequestBody @Valid SubredditDTO subredditDTO) {
-        return subredditService.save(subredditDTO);
+            return subredditService.save(subredditDTO);
     }
 
 }
