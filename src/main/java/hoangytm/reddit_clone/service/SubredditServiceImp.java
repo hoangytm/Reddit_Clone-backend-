@@ -54,7 +54,7 @@ public class SubredditServiceImp implements SubredditService {
     }
 
     private Subreddit mapToSubreddit(SubredditDTO subredditDTO) {
-        return Subreddit.builder().name("/r/" + subredditDTO.getName())
+        return Subreddit.builder().name(  subredditDTO.getName())
                 .description(subredditDTO.getDescription())
                 .user(authService.getCurrentUser())
                 .createdDate(now()).build();

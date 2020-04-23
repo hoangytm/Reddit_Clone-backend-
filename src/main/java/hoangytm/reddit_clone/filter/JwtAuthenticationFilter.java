@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static hoangytm.reddit_clone.common.Constant.SIGN_UP_URL;
+import static hoangytm.reddit_clone.common.Constant.SWAGGER_URL;
+
 /**
  * @author PhanHoang
  * 4/21/2020
@@ -35,7 +38,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         String jwt = getJwtFromRequest(request);
         String url = request.getRequestURL().toString();
-        if (url.equals(Constant.LOG_IN_URL) || url.equals(Constant.SIGN_UP_URL)) {
+        if (url.equals(Constant.LOG_IN_URL) || url.equals(SIGN_UP_URL)|| url.equals(SWAGGER_URL)) {
                 filterChain.doFilter(request, response);
         } else if (StringUtils.hasText(jwt) && jwtProvider.validateToken(jwt)) {
             String username = jwtProvider.getUsernameFromJWT(jwt);
@@ -49,6 +52,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
 
         } else {
+//            filterChain.doFilter(request, response);
             throw new RuntimeException("invalid token");
         }
 

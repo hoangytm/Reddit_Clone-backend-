@@ -10,4 +10,5 @@ public class Constant {
     public static final long JWT_EXPIRATION = 604800000L;
     public static final String SIGN_UP_URL= "http://localhost:8080/api/auth/signup";
     public static final String LOG_IN_URL= "http://localhost:8080/api/auth/login";
+    public static final String SWAGGER_URL = "http://localhost:8080/swagger-ui.html";
 }
